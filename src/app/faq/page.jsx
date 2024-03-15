@@ -14,7 +14,7 @@ export default function Faq() {
         
         <div className="mb-8">
           <h2 className="text-xl font-bold">Bu bilgiler nereden geliyor?</h2>
-          <p>Uçuş bilgilerini almak için <a href="https://www.flypgs.com" className="underline">flypgs.com</a> API'sini kullanıyorum.</p>
+          <p>Uçuş bilgilerini almak için <a href="https://www.flypgs.com" className="underline">flypgs.com</a> API'ını kullanıyorum.</p>
         </div>
         
         <div className="mb-8">
@@ -24,7 +24,7 @@ export default function Faq() {
         
         <div className="mb-8">
           <h2 className="text-xl font-bold">Bu site ne sıklıkla güncellenmektedir?</h2>
-          <p>Biletler saat başı güncellenmektedir.</p>
+          <p>Uçuşlar saat başı güncellenmektedir.</p>
         </div>
         
         <div className="mb-8">
@@ -34,7 +34,7 @@ export default function Faq() {
         
         <div className="mb-8">
           <h2 className="text-xl font-bold">Nereden para kazanıyorsun?</h2>
-          <p>Kazanmıyorum. Bu siteyi sadece uyguna kendim ve çevrem için uçak bileti bulması için yaptım, sonra seninle paylaşmak istedim.</p>
+          <p>Kazanmıyorum. Bu siteyi kendime ve arkadaşlarıma uyguna uçak bileti bulabilmek için yaptım, sonra seninle paylaşmak istedim.</p>
         </div>
         
         <div>
