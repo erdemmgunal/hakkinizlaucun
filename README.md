@@ -41,7 +41,7 @@ Bu uygulama, Next.js kullanılarak geliştirilmiştir. Ana bileşenler arasında
 - React Hooks
 - Fetch API
 - HTML
-- CSS
+- TAILWIND CSS
 
 ## Daha Fazla Bilgi
 
