@@ -9,7 +9,7 @@ Uygulama, bir Next.js projesidir ve client-side rendering (CSR) kullanır. Yani,
 1. İlk olarak, uygulama verileri API'den çeker ve yükleme ekranı gösterir.
 2. Veriler yüklendikten sonra, kullanıcıya süre, fiyat, kalkış ve varış şehirleri gibi çeşitli filtreleme seçenekleri sunulur.
 3. Kullanıcı filtreleme seçeneklerini işaretledikçe, uçuşlar bu seçeneklere göre filtrelenir ve sonuçlar tabloda gösterilir.
-4. Kullanıcılar ayrıca "SSS", "Gizlilik Politikası" ve iletişim bilgileri gibi bağlantıları da bulabilirler.
+4. Kullanıcılar ayrıca "SSS (kimse sormadi ben kendim ekledim)", "Gizlilik Politikası (burada yazanlar tamamen kolpa daha resmi gozuksun diye ekledim)" ve iletişim bilgileri gibi bağlantıları da bulabilirler.
 
 ## Özellikler
 
