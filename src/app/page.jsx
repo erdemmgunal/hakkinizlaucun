@@ -265,7 +265,7 @@ export default function Home() {
 		
 				{!isLoading && (
 					<h1 className="m-10 font-bold text-xs py-4 text-white">
-						Son güncelleme: {lastUpdated} Toplam uçuşlar {totalFlights} (BU SİTEDE GÖRÜNEN İÇERİKLER <a href="https://www.flypgs.com" className="underline" target="_blank">FLYPGS.COM</a> API 'INDAN GELİR. BU İÇERİK 'OLDUĞU GİBİ' SAĞLANIR VE HERHANGİ BİR ZAMAN DEĞİŞTİRİLEBİLİR VEYA KALDIRILABİLİR. KAR AMACI GUTMEDEN KENDIM VE ARKADASLARI ICIN YAPILIP DAHA SONRASINDA GEZIP BILET BULAMAYAN SEN ICIN ACILMISTIR. TURKIYE VE CEVRESINDEN YAKIN TARIHLI KISA SURELI AVRUPA UCUSLARINI LISTELER DAHA DETAYLI ARAMALAR ICIN LUTFEN <a href="https://www.flypgs.com" className="underline" target="_blank">FLYPGS.COM</a>'U KULLAN.)
+						Son güncelleme: {lastUpdated} Toplam uçuşlar {totalFlights} (BU SİTEDE GÖRÜNEN İÇERİKLER <a href="https://www.flypgs.com" className="underline" target="_blank">FLYPGS.COM</a> API 'INDAN GELİR. BU İÇERİK 'OLDUĞU GİBİ' SAĞLANIR VE HERHANGİ BİR ZAMAN DEĞİŞTİRİLEBİLİR VEYA KALDIRILABİLİR. KAR AMACI GUTMEDEN KENDIM VE ARKADASLARI ICIN YAPILIP DAHA SONRASINDA GEZMEK ISTEYIP BILET BULAMAYAN SEN ICIN ACILMISTIR. TURKIYE VE CEVRESINDEN YAKIN TARIHLI KISA SURELI AVRUPA UCUSLARINI LISTELER DAHA DETAYLI ARAMALAR ICIN LUTFEN <a href="https://www.flypgs.com" className="underline" target="_blank">FLYPGS.COM</a>'U KULLAN.)
 					</h1>
 				)}
 				
