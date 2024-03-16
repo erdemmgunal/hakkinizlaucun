@@ -25,7 +25,7 @@ export default function Privacy() {
 
         <h1 className="text-3xl font-bold mb-5">Ek Bilgiler</h1>
         <div>
-          <p>Başka sorularınız varsa <a href="mailto:hello@hakkinizlaucun.com" className="underline">support@flightfindertr.com</a> adresine e-posta gönder.</p>
+          <p>Başka sorularınız varsa <a href="mailto:hello@hakkinizlaucun.com" className="underline">hello@hakkinizlaucun.com</a> adresine e-posta gönder.</p>
         </div>
       </div>
     </div>
