@@ -219,7 +219,7 @@ export default function Home() {
 									<Link href="/privacy" className="underline font-bold text-[#02aff1]">Gizlilik Politikası</Link>
 								</li>
 								<li className="pt-2 mb-2">
-									<Link href="https://www.hakki.info/" className="underline font-bold text-[#02aff1]">Bana ulaşın</Link>
+									<Link href="http://linkedin.com/in/hakkierdem/" className="underline font-bold text-[#02aff1]">Bana ulaşın</Link>
 								</li>
 							</ul>
 						</fieldset>
