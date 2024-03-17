@@ -21,14 +21,15 @@ export async function fetchData() {
     }
 }
 
-export async function GET(request) {
-    const flights = await fetchData();
-
-    if (flights) {
+export async function POST(request) {
+    const {action} = await request.json()
+    console.log(action)
+    if (action === 'dealItems'){
+        const flights = await fetchData();
         const response = NextResponse.json(flights);
         response.headers.set('Cache-Control', 'no-cache, no-store, must-revalidate');
         return response;
     } else {
-        return NextResponse.json({ error: 'Error fetching flights', message: error.message, status: 500 });
+        return NextResponse.json({ error: 'action not found', status: 500 });
     }
 }
