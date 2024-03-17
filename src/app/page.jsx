@@ -123,7 +123,7 @@ export default function Home() {
 				) : (
 					<div className="px-2 float-left">
 						<fieldset className="border mb-2 w-full m-0 p-2 border-white">
-							<legend className="font-bold text-white">Süre</legend>
+							<legend className="font-bold text-white">Toplam Gün</legend>
 							{durations.map(duration => (
 								<label key={duration} className="flex items-center space-x-1 text-white">
 									<input
