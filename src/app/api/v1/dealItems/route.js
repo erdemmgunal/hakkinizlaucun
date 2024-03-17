@@ -1,12 +1,12 @@
 import { MongoClient } from 'mongodb';
-import { NextResponse } from "next/server"
+import { NextResponse } from 'next/server';
 
 export async function fetchData() {
     const client = new MongoClient(process.env.MONGODB_URI);
 
     try {
         await client.connect();
-        console.log('connected to mongodb')
+        console.log('connected to mongodb');
 
         const database = client.db('hakkiscanner');
         const collection = database.collection('PegasusFlights');
@@ -25,9 +25,9 @@ export async function GET(request) {
     const flights = await fetchData();
 
     if (flights) {
-        const response = NextResponse.json(flights)
+        const response = NextResponse.json(flights);
         response.headers.set('Cache-Control', 'no-cache, no-store, must-revalidate');
-        return response
+        return response; // Return the response with correct Cache-Control headers
     } else {
         return NextResponse.json({ error: 'Error fetching flights', message: error.message, status: 500 });
     }
