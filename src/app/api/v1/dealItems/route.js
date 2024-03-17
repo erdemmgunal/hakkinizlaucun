@@ -25,7 +25,9 @@ export async function GET(request) {
     const flights = await fetchData();
 
     if (flights) {
-        return NextResponse.json(flights)
+        const response = NextResponse.json(flights)
+        response.headers.set('Cache-Control', 'no-cache, no-store, must-revalidate');
+        return response
     } else {
         return NextResponse.json({ error: 'Error fetching flights', message: error.message, status: 500 });
     }
