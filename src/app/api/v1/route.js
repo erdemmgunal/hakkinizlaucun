@@ -23,7 +23,6 @@ export async function fetchData() {
 
 export async function POST(request) {
     const {action} = await request.json()
-    console.log(action)
     if (action === 'dealItems'){
         const flights = await fetchData();
         const response = NextResponse.json(flights);
