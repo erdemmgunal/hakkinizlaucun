@@ -87,7 +87,7 @@ export default function Home() {
 			console.log('%cHire me! https://hakki.info/', 'color: #02aff1; font-weight: bold;');
 			const fetchData = async () => {
 				try {
-					const response = await fetch("/api/v1/dealItems");
+					const response = await fetch("/api/v1/dealItems", {cache: 'no-store'});
 					const data = await response.json();
 
 					setLastUpdated(data[0].lastUpdated);
