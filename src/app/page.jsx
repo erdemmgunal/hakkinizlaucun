@@ -89,7 +89,7 @@ export default function Home() {
 				try {
 					const response = await fetch('/api/v1', {
 						method: 'POST',
-						body: JSON.stringify({ action: 'dealItems' }),
+						body: JSON.stringify({ action: 'dealItems' , 'site':'pegasus'}),
 						headers: {
 							'Content-Type': 'application/json',
 						},
