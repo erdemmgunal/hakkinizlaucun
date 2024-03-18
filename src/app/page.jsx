@@ -128,112 +128,120 @@ export default function Home() {
 						</p>
 					</div>
 				) : (
-					<div className="px-2 float-left">
-						<fieldset className="border mb-2 w-full m-0 p-2 border-white">
-							<legend className="font-bold text-white">Toplam Gün</legend>
-							{durations.map(duration => (
-								<label key={duration} className="flex items-center space-x-1 text-white">
-									<input
-										type="checkbox"
-										data-duration={duration}
-										checked={checkedDurations.includes(duration)}
-										onChange={() => handleDurationChange(duration)}
-									/>
-									{duration}
-								</label>
-							))}
-						</fieldset>
-		
-						<fieldset className="border mb-2 w-full m-0 p-2 border-white">
-							<legend className="font-bold text-white">Fiyat</legend>
-							<div className="pt-2 flex flex-col">
-								<div className="flex items-center">
-									<input
-										className="block w-14 mr-1 text-black"
-										type="number"
-										placeholder="TL"
-										id="price_min"
-										value={priceRange.min}
-										onChange={handlePriceChange}
-									/>
-									<label htmlFor="price_min" className="font-bold text-white">
-										Min
+					<div>
+						<div className="flex justify-center items-center mb-6 ">
+								<ul className="flex">
+										<li className="mr-6">
+												<Link href='/' className="text-white font-bold underline">Pegasus</Link>
+										</li>
+										<li>
+												<Link href='/biryere' className="text-white font-bold">Biryere</Link>
+										</li>
+								</ul>
+						</div>
+						<div className="px-2 float-left">
+							<fieldset className="border mb-2 w-full m-0 p-2 border-white">
+								<legend className="font-bold text-white">Toplam Gün</legend>
+								{durations.map(duration => (
+									<label key={duration} className="flex items-center space-x-1 text-white">
+										<input
+											type="checkbox"
+											data-duration={duration}
+											checked={checkedDurations.includes(duration)}
+											onChange={() => handleDurationChange(duration)}
+										/>
+										{duration}
 									</label>
+								))}
+							</fieldset>
+			
+							<fieldset className="border mb-2 w-full m-0 p-2 border-white">
+								<legend className="font-bold text-white">Fiyat</legend>
+								<div className="pt-2 flex flex-col">
+									<div className="flex items-center">
+										<input
+											className="block w-14 mr-1 text-black"
+											type="number"
+											placeholder="TL"
+											id="price_min"
+											value={priceRange.min}
+											onChange={handlePriceChange}
+										/>
+										<label htmlFor="price_min" className="font-bold text-white">
+											Min
+										</label>
+									</div>
+									<div className="flex items-center mt-2">
+										<input
+											className="block w-14 mr-1 text-black"
+											type="number"
+											placeholder="TL"
+											id="price_max"
+											value={priceRange.max}
+											onChange={handlePriceChange}
+										/>
+										<label htmlFor="price_max" className="font-bold text-white">
+											Max
+										</label>
+									</div>
 								</div>
-								<div className="flex items-center mt-2">
-									<input
-										className="block w-14 mr-1 text-black"
-										type="number"
-										placeholder="TL"
-										id="price_max"
-										value={priceRange.max}
-										onChange={handlePriceChange}
-									/>
-									<label htmlFor="price_max" className="font-bold text-white">
-										Max
+							</fieldset>
+		
+							<fieldset className="border mb-2 w-full m-0 p-2 border-white">
+								<legend className="font-bold text-white">
+									<label className="block text-bold">
+										<input type="checkbox" defaultChecked={true} onChange={(event) => toggleAllCheckboxes(event, 'departure')} />
+										Kalkış Yeri
 									</label>
-								</div>
-							</div>
-						</fieldset>
-		
-						<fieldset className="border mb-2 w-full m-0 p-2 border-white">
-							<legend className="font-bold text-white">
-								<label className="block text-bold">
-									<input type="checkbox" defaultChecked={true} onChange={(event) => toggleAllCheckboxes(event, 'departure')} />
-									Kalkış Yeri
-								</label>
-							</legend>
-							{departureCities.map((departureCity, index) => (
-								<label key={index} className="block font-bold text-white">
-									<input
-										className="mr-1"
-										type="checkbox"
-										data-departure_cities={departureCity.city}
-										checked={checkedDepartureCities.includes(departureCity.city)}
-										onChange={() => handleDepartureCityChange(departureCity.city)}
-									/>
-									{departureCity.city}
-								</label>
-							))}
-						</fieldset>
-		
-						<fieldset className="border mb-2 w-full m-0 p-2 border-white">
-							<legend className="font-bold text-white">
-								<label className="block text-bold">
-									<input type="checkbox" defaultChecked={true} onChange={(event) => toggleAllCheckboxes(event, 'arrival')}/>
-									Varış Şehri
-								</label>
-							</legend>
-							{arrivalCities.map((arrivalCity, index) => (
-								<label key={index} className="block font-bold text-white">
-									<input
-										className="mr-1"
-										type="checkbox"
-										data-arrival_cities={arrivalCity.city}
-										checked={checkedArrivalCities.includes(arrivalCity.city)}
-										onChange={() => handleArrivalCityChange(arrivalCity.city)}
-									/>{arrivalCity.city}
-								</label>
-							))}
-						</fieldset>
-		
-						<fieldset className="border m-0 w-full p-2 mb-5 border-white">
-							<ul>
-								<li className="pt-2">
-									<Link href="/faq" className="underline font-bold text-[#02aff1]">SSS</Link>
-								</li>
-								<li className="pt-2">
-									<Link href="/privacy" className="underline font-bold text-[#02aff1]">Gizlilik Politikası</Link>
-								</li>
-								<li className="pt-2 mb-2">
-									<Link href="http://linkedin.com/in/hakkierdem/" className="underline font-bold text-[#02aff1]">Bana ulaşın</Link>
-								</li>
-							</ul>
-						</fieldset>
+								</legend>
+								{departureCities.map((departureCity, index) => (
+									<label key={index} className="block font-bold text-white">
+										<input
+											className="mr-1"
+											type="checkbox"
+											data-departure_cities={departureCity.city}
+											checked={checkedDepartureCities.includes(departureCity.city)}
+											onChange={() => handleDepartureCityChange(departureCity.city)}
+										/>
+										{departureCity.city}
+									</label>
+								))}
+							</fieldset>
+			
+							<fieldset className="border mb-2 w-full m-0 p-2 border-white">
+								<legend className="font-bold text-white">
+									<label className="block text-bold">
+										<input type="checkbox" defaultChecked={true} onChange={(event) => toggleAllCheckboxes(event, 'arrival')}/>
+										Varış Şehri
+									</label>
+								</legend>
+								{arrivalCities.map((arrivalCity, index) => (
+									<label key={index} className="block font-bold text-white">
+										<input
+											className="mr-1"
+											type="checkbox"
+											data-arrival_cities={arrivalCity.city}
+											checked={checkedArrivalCities.includes(arrivalCity.city)}
+											onChange={() => handleArrivalCityChange(arrivalCity.city)}
+										/>{arrivalCity.city}
+									</label>
+								))}
+							</fieldset>
+			
+							<fieldset className="border m-0 w-full p-2 mb-5 border-white">
+								<ul>
+									<li className="pt-2">
+										<Link href="/faq" className="underline font-bold text-[#02aff1]">SSS</Link>
+									</li>
+									<li className="pt-2">
+										<Link href="/privacy" className="underline font-bold text-[#02aff1]">Gizlilik Politikası</Link>
+									</li>
+									<li className="pt-2 mb-2">
+										<Link href="http://linkedin.com/in/hakkierdem/" className="underline font-bold text-[#02aff1]">Bana ulaşın</Link>
+									</li>
+								</ul>
+							</fieldset>
 					</div>
-				)}
-
-				{!isLoading && (
 					<table className="border-0 pt-2">
 						<thead>
 							<tr className="leading-5 text-white">
@@ -268,14 +276,13 @@ export default function Home() {
 							))}
 						</tbody>
 					</table>
+					<footer>
+						<h1 className="m-10 font-bold text-xs py-4 text-white">
+							Son güncelleme: {lastUpdated} Toplam uçuşlar {totalFlights} (BU SİTEDE GÖRÜNEN İÇERİKLER <a href="https://www.flypgs.com" className="underline" target="_blank">FLYPGS.COM</a> API 'INDAN GELİR. BU İÇERİK 'OLDUĞU GİBİ' SAĞLANIR VE HERHANGİ BİR ZAMAN DEĞİŞTİRİLEBİLİR VEYA KALDIRILABİLİR. KAR AMACI GUTMEDEN KENDIM VE ARKADASLARI ICIN YAPILIP DAHA SONRASINDA GEZMEK ISTEYIP BILET BULAMAYAN SEN ICIN ACILMISTIR. TURKIYE VE CEVRESINDEN YAKIN TARIHLI KISA SURELI AVRUPA UCUSLARINI LISTELER DAHA DETAYLI ARAMALAR ICIN LUTFEN <a href="https://www.flypgs.com" className="underline" target="_blank">FLYPGS.COM</a>'U KULLAN.)
+						</h1>
+					</footer>
+					</div>
 				)}
-		
-				{!isLoading && (
-					<h1 className="m-10 font-bold text-xs py-4 text-white">
-						Son güncelleme: {lastUpdated} Toplam uçuşlar {totalFlights} (BU SİTEDE GÖRÜNEN İÇERİKLER <a href="https://www.flypgs.com" className="underline" target="_blank">FLYPGS.COM</a> API 'INDAN GELİR. BU İÇERİK 'OLDUĞU GİBİ' SAĞLANIR VE HERHANGİ BİR ZAMAN DEĞİŞTİRİLEBİLİR VEYA KALDIRILABİLİR. KAR AMACI GUTMEDEN KENDIM VE ARKADASLARI ICIN YAPILIP DAHA SONRASINDA GEZMEK ISTEYIP BILET BULAMAYAN SEN ICIN ACILMISTIR. TURKIYE VE CEVRESINDEN YAKIN TARIHLI KISA SURELI AVRUPA UCUSLARINI LISTELER DAHA DETAYLI ARAMALAR ICIN LUTFEN <a href="https://www.flypgs.com" className="underline" target="_blank">FLYPGS.COM</a>'U KULLAN.)
-					</h1>
-				)}
-				
 			</div>
 		);
 }
