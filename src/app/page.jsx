@@ -259,7 +259,7 @@ export default function Home() {
 						</thead>
 						<tbody>
 							{filteredFlights.map((flight, index) => (
-								<tr key={index} className="text-white">
+								<tr key={index}  className={index % 2 === 0 ? 'bg-black text-white' : 'bg-slate-800 text-white'}>
 									<td className="px-4 text-left">{flight.departure.date}</td>
 									<td className="px-4 text-left">{flight.departure.city}</td>
 									<td className="px-4 text-left">{flight.departure.price}</td>
