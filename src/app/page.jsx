@@ -1,6 +1,7 @@
 "use client"
 import Link from "next/link"
 import React, { useEffect, useState } from "react";
+import { Skeleton } from "@/components/ui/skeleton"
 
 export default function Home() {
   	const [isLoading, setIsLoading] = useState(true);
@@ -77,7 +78,6 @@ export default function Home() {
         setFilteredFlights(updatedFlights);
     };
     
-	
 	useEffect(() => {
         const fetchData = async () => {
             try {
@@ -140,10 +140,19 @@ export default function Home() {
     return (
 			<div>
 				{isLoading ? (
-					<div className="flex justify-center items-center bg-black">
-						<p className="text-white font-bold text-2xl text-center mt-10 mb-2">
-							Loading ...
-						</p>
+					<div>
+						<div className="flex justify-center items-center mb-6">
+							<Skeleton className="text-white font-bold underline"/>
+							<Skeleton className="text-white font-bold"/>
+						</div>
+						<div className="px-2 float-left mb-4">
+							<div className="space-y-4"> 
+								<Skeleton className="border mb-2 m-0 p-2 w-[226px] h-[185px]"/>
+								<Skeleton className="border mb-2 m-0 p-2 w-[226px] h-[105px]"/>
+								<Skeleton className="border mb-2 m-0 p-2 w-[226px] h-[233px]"/>
+								<Skeleton className="border mb-2 m-0 p-2 w-[226px] h-[881px]"/>
+							</div>
+						</div>
 					</div>
 				) : (
 					<div>
@@ -259,46 +268,46 @@ export default function Home() {
 									</li>
 								</ul>
 							</fieldset>
-					</div>
-					<table className="border-0 pt-2">
-						<thead>
-							<tr className="leading-5 text-white">
-								<th className="px-4 text-left">Kalkış Tarihi</th>
-								<th className="px-4 text-left">Kalkış Yeri</th>
-								<th className="px-4 text-left">Fiyat</th>
-								<th className="px-4 text-left">Varış Tarihi</th>
-								<th className="px-4 text-left">Varış Ülkesi</th>
-								<th className="px-4 text-left">Varış Şehri</th>
-								<th className="px-4 text-left">Fiyat</th>
-								<th className="px-4 text-left">Toplam Fiyat</th>
-								<th className="px-4 text-left">Toplam Gün</th>
-								<th className="px-4 text-left">LINK</th>
-							</tr>
-						</thead>
-						<tbody>
-							{filteredFlights.map((flight, index) => (
-								<tr key={index}  className={index % 2 === 0 ? 'bg-black text-white' : 'bg-slate-800 text-white'}>
-									<td className="px-4 text-left">{flight.departure.date}</td>
-									<td className="px-4 text-left">{flight.departure.city}</td>
-									<td className="px-4 text-left">{flight.departure.price}</td>
-									<td className="px-4 text-left">{flight.arrival.date}</td>
-									<td className="px-4 text-left">{flight.arrival.country}</td>
-									<td className="px-4 text-left">{flight.arrival.city}</td>
-									<td className="px-4 text-left">{flight.arrival.price}</td>
-									<td className="px-4 text-left">{flight.totalPrice}</td>
-									<td className="px-4 text-left">{flight.duration}</td>
-									<td className="px-4 text-left">
-										<a href={flight.slug} target="_blank" className="underline font-bold text-[#02aff1]">LINK</a>
-									</td>
+						</div>
+						<table className="border-0 pt-2">
+							<thead>
+								<tr className="leading-5 text-white">
+									<th className="px-4 text-left">Kalkış Tarihi</th>
+									<th className="px-4 text-left">Kalkış Yeri</th>
+									<th className="px-4 text-left">Fiyat</th>
+									<th className="px-4 text-left">Varış Tarihi</th>
+									<th className="px-4 text-left">Varış Ülkesi</th>
+									<th className="px-4 text-left">Varış Şehri</th>
+									<th className="px-4 text-left">Fiyat</th>
+									<th className="px-4 text-left">Toplam Fiyat</th>
+									<th className="px-4 text-left">Toplam Gün</th>
+									<th className="px-4 text-left">LINK</th>
 								</tr>
-							))}
-						</tbody>
-					</table>
-					<footer>
-						<h1 className="m-10 font-bold text-xs py-4 text-white">
-							Son güncelleme: {lastUpdated} Toplam uçuşlar {totalFlights} (BU SİTEDE GÖRÜNEN İÇERİKLER <a href="https://www.flypgs.com" className="underline" target="_blank">FLYPGS.COM</a> API 'INDAN GELİR. BU İÇERİK 'OLDUĞU GİBİ' SAĞLANIR VE HERHANGİ BİR ZAMAN DEĞİŞTİRİLEBİLİR VEYA KALDIRILABİLİR. KAR AMACI GUTMEDEN KENDIM VE ARKADASLARI ICIN YAPILIP DAHA SONRASINDA GEZMEK ISTEYIP BILET BULAMAYAN SEN ICIN ACILMISTIR. TURKIYE VE CEVRESINDEN YAKIN TARIHLI KISA SURELI AVRUPA UCUSLARINI LISTELER DAHA DETAYLI ARAMALAR ICIN LUTFEN <a href="https://www.flypgs.com" className="underline" target="_blank">FLYPGS.COM</a>'U KULLAN.)
-						</h1>
-					</footer>
+							</thead>
+							<tbody>
+								{filteredFlights.map((flight, index) => (
+									<tr key={index}  className={index % 2 === 0 ? 'bg-black text-white' : 'bg-slate-800 text-white'}>
+										<td className="px-4 text-left">{flight.departure.date}</td>
+										<td className="px-4 text-left">{flight.departure.city}</td>
+										<td className="px-4 text-left">{flight.departure.price}</td>
+										<td className="px-4 text-left">{flight.arrival.date}</td>
+										<td className="px-4 text-left">{flight.arrival.country}</td>
+										<td className="px-4 text-left">{flight.arrival.city}</td>
+										<td className="px-4 text-left">{flight.arrival.price}</td>
+										<td className="px-4 text-left">{flight.totalPrice}</td>
+										<td className="px-4 text-left">{flight.duration}</td>
+										<td className="px-4 text-left">
+											<a href={flight.slug} target="_blank" className="underline font-bold text-[#02aff1]">LINK</a>
+										</td>
+									</tr>
+								))}
+							</tbody>
+						</table>
+						<footer>
+							<h1 className="m-10 font-bold text-xs py-4 text-white">
+								Son güncelleme: {lastUpdated} Toplam uçuşlar {totalFlights} (BU SİTEDE GÖRÜNEN İÇERİKLER <a href="https://www.flypgs.com" className="underline" target="_blank">FLYPGS.COM</a> API 'INDAN GELİR. BU İÇERİK 'OLDUĞU GİBİ' SAĞLANIR VE HERHANGİ BİR ZAMAN DEĞİŞTİRİLEBİLİR VEYA KALDIRILABİLİR. KAR AMACI GUTMEDEN KENDIM VE ARKADASLARI ICIN YAPILIP DAHA SONRASINDA GEZMEK ISTEYIP BILET BULAMAYAN SEN ICIN ACILMISTIR. TURKIYE VE CEVRESINDEN YAKIN TARIHLI KISA SURELI AVRUPA UCUSLARINI LISTELER DAHA DETAYLI ARAMALAR ICIN LUTFEN <a href="https://www.flypgs.com" className="underline" target="_blank">FLYPGS.COM</a>'U KULLAN.)
+							</h1>
+						</footer>
 					</div>
 				)}
 			</div>
