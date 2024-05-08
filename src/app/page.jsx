@@ -5,120 +5,138 @@ import React, { useEffect, useState } from "react";
 export default function Home() {
   	const [isLoading, setIsLoading] = useState(true);
     
-		const [flightsData, setFlightsData] = useState([]);
+	const [flightsData, setFlightsData] = useState([]);
 
     const [lastUpdated, setLastUpdated] = useState("");
     const [totalFlights, setTotalFlights] = useState(0);
 
-		const [durations, setDurations ] = useState([]);
-		const [checkedDurations, setCheckedDurations] = useState([]);
-		const [priceRange, setPriceRange] = useState({ price_min: '', price_max: '' });
+	const [durations, setDurations ] = useState([]);
+	const [checkedDurations, setCheckedDurations] = useState([]);
+	const [priceRange, setPriceRange] = useState({ price_min: '', price_max: '' });
 
-		const [checkedDepartureCities, setCheckedDepartureCities] = useState([]);
-		const [checkedArrivalCities, setCheckedArrivalCities] = useState([]);
-    
-		const [departureCities, setDepartureCities] = useState([]);
-		const [arrivalCities, setArrivalCities] = useState([]);
+	const [checkedDepartureCities, setCheckedDepartureCities] = useState([]);
+	const [checkedArrivalCities, setCheckedArrivalCities] = useState([]);
+
+	const [departureCities, setDepartureCities] = useState([]);
+	const [arrivalCities, setArrivalCities] = useState([]);
 
     const [filteredFlights, setFilteredFlights] = useState([]);
 
-		const handleDurationChange = (duration) => {
-			// Toggle checked duration
-			const updatedDurations = checkedDurations.includes(duration)
-				? checkedDurations.filter((dur) => dur !== duration)
-				: [...checkedDurations, duration];
-			setCheckedDurations(updatedDurations);
-			filterFlights(updatedDurations, priceRange, checkedDepartureCities, checkedArrivalCities);
-		};
-  
+    const handleDurationChange = (duration) => {
+        const updatedDurations = checkedDurations.includes(duration)
+            ? checkedDurations.filter((dur) => dur !== duration)
+            : [...checkedDurations, duration];
+        setCheckedDurations(updatedDurations);
+        filterFlights(updatedDurations, priceRange, checkedDepartureCities, checkedArrivalCities);
+    };
+
     const handlePriceChange = (event) => {
-      // Update price range
-      const { id, value } = event.target;
-      setPriceRange((prevRange) => ({
-        ...prevRange,
-        [id]: value,
-      }));
-      filterFlights(checkedDurations, { ...priceRange, [id]: value }, checkedDepartureCities, checkedArrivalCities);
+        const { id, value } = event.target;
+        setPriceRange((prevRange) => ({
+            ...prevRange,
+            [id]: value,
+        }));
+        filterFlights(checkedDurations, { ...priceRange, [id]: value }, checkedDepartureCities, checkedArrivalCities);
     };
   
     const handleDepartureCityChange = (city) => {
-      // Toggle checked departure city
-      const updatedCities = checkedDepartureCities.includes(city)
-        ? checkedDepartureCities.filter((c) => c !== city)
-        : [...checkedDepartureCities, city];
-      setCheckedDepartureCities(updatedCities);
-      filterFlights(checkedDurations, priceRange, updatedCities, checkedArrivalCities);
+        const updatedCities = checkedDepartureCities.includes(city)
+            ? checkedDepartureCities.filter((c) => c !== city)
+            : [...checkedDepartureCities, city];
+        setCheckedDepartureCities(updatedCities);
+        filterFlights(checkedDurations, priceRange, updatedCities, checkedArrivalCities);
     };
   
     const handleArrivalCityChange = (city) => {
-      // Toggle checked arrival city
-      const updatedCities = checkedArrivalCities.includes(city)
-        ? checkedArrivalCities.filter((c) => c !== city)
-        : [...checkedArrivalCities, city];
-      setCheckedArrivalCities(updatedCities);
-      filterFlights(checkedDurations, priceRange, checkedDepartureCities, updatedCities);
+        const updatedCities = checkedArrivalCities.includes(city)
+            ? checkedArrivalCities.filter((c) => c !== city)
+            : [...checkedArrivalCities, city];
+        setCheckedArrivalCities(updatedCities);
+        filterFlights(checkedDurations, priceRange, checkedDepartureCities, updatedCities);
     };
   
     const toggleAllCheckboxes = (event, type) => {
-      const isChecked = event.target.checked;
-      if (type === 'departure') {
-        setCheckedDepartureCities(isChecked ? departureCities.map(city => city.city) : []);
-      } else if (type === 'arrival') {
-        setCheckedArrivalCities(isChecked ? arrivalCities.map(city => city.city) : []);
-      }
+        const isChecked = event.target.checked;
+        if (type === 'departure') {
+            setCheckedDepartureCities(isChecked ? departureCities.map(city => city.city) : []);
+        } else if (type === 'arrival') {
+            setCheckedArrivalCities(isChecked ? arrivalCities.map(city => city.city) : []);
+        }
     };
     
     const filterFlights = (durations, price, departureCities, arrivalCities) => {
-      // Filter flights based on selected options
-      const updatedFlights = flightsData.filter((flight) => {
-        return (
-          (durations == [] || durations.includes(flight.duration)) &&
-          (price.price_min === '' || parseInt(price.price_min) <= flight.totalPrice) &&
-          (price.price_max === '' || parseInt(price.price_max) >= flight.totalPrice) &&
-          (departureCities == [] || departureCities.includes(flight.departure.city)) &&
-          (arrivalCities == [] || arrivalCities.includes(flight.arrival.city))
-          );
+        const updatedFlights = flightsData.filter((flight) => {
+            return (
+                (durations.length === 0 || durations.includes(flight.duration)) &&
+                (price.price_min === '' || parseInt(price.price_min) <= flight.totalPrice) &&
+                (price.price_max === '' || parseInt(price.price_max) >= flight.totalPrice) &&
+                (departureCities.length === 0 || departureCities.includes(flight.departure.city)) &&
+                (arrivalCities.length === 0 || arrivalCities.includes(flight.arrival.city))
+            );
         });
         setFilteredFlights(updatedFlights);
-      };
-
-		useEffect(() => {
-			// Fetch data from AP
-			console.log('%cHire me! https://hakki.info/', 'color: #02aff1; font-weight: bold;');
-			const fetchData = async () => {
-				try {
-					const response = await fetch('/api/v1', {
-						method: 'POST',
-						body: JSON.stringify({ action: 'dealItems' , 'site':'pegasus'}),
-						headers: {
-							'Content-Type': 'application/json',
-						},
-					});
-
-					const data = await response.json();
-
-					setLastUpdated(data[0].lastUpdated);
-					setTotalFlights(data.length);
-					setDurations([...new Set(data.map((flight) => flight.duration))].sort((a, b) => a - b));
-
-					setCheckedDepartureCities(data.map(flight => flight.departure.city));
-					setCheckedArrivalCities(data.map(flight => flight.arrival.city));
-					
-					setDepartureCities(Array.from(new Set(data.map((flight) => flight.departure.city))).sort().map((city, index) => ({city,key: data.find((flight) => flight.departure.city === city).departure.code})));
-					setArrivalCities(Array.from(new Set(data.map((flight) => flight.arrival.city))).sort().map((city, index) => ({city,key: data.find((flight) => flight.arrival.city === city).arrival.code})));
-					
-					setIsLoading(false);
-					setFlightsData(data);
-					
-				} catch (error) {
-					console.error("Error fetching data:", error);
-					setIsLoading(true);
-				}
-			};
+    };
+    
 	
-			fetchData();
-		}, []);
+	useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await fetch('/api/v1', {
+                    method: 'POST',
+                    body: JSON.stringify({ action: 'dealItems', site: 'pegasus' }),
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                });
 
+                const data = await response.json();
+
+                setLastUpdated(data[0].lastUpdated);
+                setTotalFlights(data.length);
+				const allDurations = [...new Set(data.map((flight) => flight.duration))].sort((a, b) => a - b);
+                setDurations(allDurations);
+				setCheckedDurations(allDurations);
+				
+                setPriceRange({ price_min: '', price_max: '' });
+                setDepartureCities([]);
+                setArrivalCities([]);
+                
+                const allDepartureCities = Array.from(new Set(data.map((flight) => flight.departure.city))).sort().map((city) => ({
+                    city,
+                    key: data.find((flight) => flight.departure.city === city).departure.code,
+                }));
+                setDepartureCities(allDepartureCities);
+                setCheckedDepartureCities(allDepartureCities.map(city => city.city));
+
+                const allArrivalCities = Array.from(new Set(data.map((flight) => flight.arrival.city))).sort().map((city) => ({
+                    city,
+                    key: data.find((flight) => flight.arrival.city === city).arrival.code,
+                }));
+                setArrivalCities(allArrivalCities);
+                setCheckedArrivalCities(allArrivalCities.map(city => city.city));
+
+                filterFlights(
+                    [...new Set(data.map((flight) => flight.duration))].sort((a, b) => a - b),
+                    { price_min: '', price_max: '' },
+                    [],
+                    []
+                );
+
+                setIsLoading(false);
+                setFlightsData(data);
+            } catch (error) {
+                console.error("Error fetching data:", error);
+                setIsLoading(true);
+            }
+        };
+
+        fetchData();
+    }, []);
+	
+	useEffect(() => {
+		filterFlights(durations, priceRange, checkedDepartureCities, checkedArrivalCities);
+    }, [durations, priceRange, checkedDepartureCities, checkedArrivalCities]);
+    
     return (
 			<div>
 				{isLoading ? (

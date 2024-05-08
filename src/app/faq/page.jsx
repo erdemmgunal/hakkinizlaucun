@@ -3,11 +3,11 @@ import Link from "next/link";
 export default function Faq() {
   return (
     <div className="p-4 text-[#02aff1]">
-      <Link href="/" passHref>
-        <a className="underline">Ana Menü</a>
+      <Link href="/" passHref className="underline">
+          Ana Menü
       </Link>
       <div className="pt-5">
-        <h1 className="text-3xl font-bold mb-5">Sıkça Sorulan Sorular (kimse sormadı ben eklemek istedim)</h1>
+        <h1 className="text-3xl font-bold mb-5">Sıkça Sorulan Sorular</h1>
         
         <div className="mb-8">
           <h2 className="text-xl font-bold">Bu site ne işe yarıyor?</h2>
