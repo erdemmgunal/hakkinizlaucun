@@ -1,7 +1,7 @@
 import { Roboto } from "next/font/google";
 import Header from '../components/Header.jsx'
 import GoogleAnalytics from "@/components/GoogleAnalytics.jsx";
-import "./globals.css";
+import '../styles/globals.css'
 
 const roboto = Roboto({ subsets: ["latin"] , weight:['300', '400', '500']});
 
