@@ -8,6 +8,9 @@ export async function middleware(request) {
                 color: 0x0099ff,
                 fields: [
                     { name: 'Path', value: `${request.nextUrl.pathname}` },
+                    { name: 'User-Agent', value: `${request.headers.get('user-agent')}` },
+                    { name: 'Referer', value: `${request.headers.get('referer')}` },
+                    { name: 'City', value: `${request.geo?.city}` },
                     { name: 'Country', value: `${request.geo?.country}` },
                     { name: 'Timestamp', value: new Date().toLocaleString() }
                 ]
