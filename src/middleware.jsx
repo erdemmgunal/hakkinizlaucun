@@ -8,13 +8,13 @@ export async function middleware(request) {
                 color: 0x0099ff,
                 fields: [
                     { name: 'Path', value: `${request.nextUrl.pathname}` },
-                    { name: 'Country', value: `${request.geo?.countr}` },
+                    { name: 'Country', value: `${request.geo?.country}` },
                     { name: 'Timestamp', value: new Date().toLocaleString() }
                 ]
             }
         ]
     };
-    
+
     const response = await fetch(process.env.DISCORD_WEBHOOK, {
         method: 'POST',
         headers: {
